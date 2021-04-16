@@ -14,12 +14,12 @@ scorer_name_1 = 'Marco van Basten'
 goal_0 = 32
 goal_1 = 54
 
-
 # 3. here is the string
-scorers = f'{scorer_name_0} {str(goal_0)}, {scorer_name_1} {str(goal_1)}'
+scorers = scorer_name_0 + ' '+ str(goal_0)+ ', ' + scorer_name_1 + ' ' + str(goal_1)
+#print(scorers)
 
 # 4.
-report = f'{scorer_name_0} scored in the {goal_0}nd minute \n{scorer_name_1} scored in the {goal_1}th minute'
+report = f'{scorer_name_0} scored in the {goal_0}nd minute\n{scorer_name_1} scored in the {goal_1}th minute'
 
 print(report)
 
@@ -27,17 +27,23 @@ print(report)
 # 1. choose a player
 player = 'Adri van Tiggelen'
 
-# 2. get his first name (assumes it's at te beginning).
-first_name = player[(player.find('Adri')):4]
+# 2. get his first name.
+first_name = player[0: (player.find(' '))]
 
 #3. what is the player's last name length
-last_name_len = len(player[(player.find('van Tiggelen')):])
+last_name_len = len(player[(player.find(' ')):-1])
 
 #4.
-name_short = player[(player.find('Adri')):1]+'. '+ player[5:]
+name_short = player[0]+'.'+ player[(player.find(' ')):]
 
 #5.
 chant = (first_name +'! ') * (len(first_name) - 1) + (first_name +'!')
 
 #6. good chant when statement this is true
-good_chant = ((first_name +'! ') * (len(first_name)) != chant)
+""" Vind het laatste character. Als dit geen spatie is, dan is de chant goed.
+    Door van de lengte van de chant-string 1 af te trekken, krijg je de index van die laatste plek.
+    Die vergelijk je vervolgens met een spatie. Is het geen spatie, dan is de statement true en is het een goede chant.
+"""
+good_chant = (chant[(len(chant)-1)] != ' ')
+
+
