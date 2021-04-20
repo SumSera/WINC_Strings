@@ -31,19 +31,16 @@ player = 'Adri van Tiggelen'
 first_name = player[0: (player.find(' '))]
 
 #3. what is the player's last name length
-last_name_len = len(player[(player.find(' ')):-1])
+# I used +1 because I guess we don't want to count the first space as part of the last name.
+last_name_len = len(player[(player.find(' ') + 1):])
 
-#4.
+#4. geen spatie achter de punt in de '.' string, want die wordt door de slice/find al geselecteerd 
 name_short = player[0]+'.'+ player[(player.find(' ')):]
-
+#print(name_short)
 #5.
 chant = (first_name +'! ') * (len(first_name) - 1) + (first_name +'!')
 
-#6. good chant when statement this is true
-""" Vind het laatste character. Als dit geen spatie is, dan is de chant goed.
-    Door van de lengte van de chant-string 1 af te trekken, krijg je de index van die laatste plek.
-    Die vergelijk je vervolgens met een spatie. Is het geen spatie, dan is de statement true en is het een goede chant.
-"""
-good_chant = (chant[(len(chant)-1)] != ' ')
+#6. good chant when statement this is true (shortest version;)
+good_chant = (chant[-1] != ' ')
 
 
